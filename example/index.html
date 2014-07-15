@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      body {
+        font: normal 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        background: #eee;
+        padding: 10px;
+        border-radius: 4px;
+      }
+
+      .thumbnail {
+        display: inline-block;
+        width: 300px;
+      }
+
+      .thumbnail::before {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app"></div>
+
+    <script id="layout-template" type="text/ractive">
+      <h1>backbone-ractive</h1>
+      <header>
+        <a href="#">Colors</a>
+      </header>
+      <article></article>
+    </script>
+
+    <script id="colors-template" type="text/ractive">
+      <h1>Colors</h1>
+      <ul>
+        {{#colors}}
+          <li><a href="#{{id}}">{{name}}</a></li>
+        {{/colors}}
+      </ul>
+    </script>
+
+    <script id="color-template" type="text/ractive">
+      <h1>{{name}}</h1>
+      <div class="thumbnail" style="background-color: {{hex}}"></div>
+    </script>
+
+    <script src="../node_modules/backbone.native/backbone.native.js"></script>
+    <script src="../node_modules/underscore/underscore.js"></script>
+    <script src="../node_modules/backbone/backbone.js"></script>
+    <script src="../node_modules/ractive/ractive.js"></script>
+    <script src="../node_modules/ractive-backbone/Ractive-Backbone.js"></script>
+    <script src="../backbone-ractive.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

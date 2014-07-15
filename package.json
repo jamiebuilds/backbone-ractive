@@ -1,0 +1,29 @@
+{
+  "name": "backbone-ractive",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thejameskyle/backbone-ractive.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thejameskyle/backbone-ractive/issues"
+  },
+  "homepage": "https://github.com/thejameskyle/backbone-ractive",
+  "dependencies": {
+    "backbone": "^1.1.2",
+    "ractive": "^0.5.5",
+    "ractive-backbone": "^0.1.0",
+    "underscore": "^1.6.0"
+  },
+  "devDependencies": {
+    "backbone.native": "^1.0.0",
+    "jquery": "^2.1.1"
+  }
+}
