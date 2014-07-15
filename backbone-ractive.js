@@ -46,7 +46,7 @@
 
     adapt: ['Backbone'],
 
-    render: function(el) {
+    render: function() {
       if (!this.el) throw new Error('RactiveView needs `el` before rendering.');
       this.ractive.render(this.el);
       return this;
