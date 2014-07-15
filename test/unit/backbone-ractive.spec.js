@@ -130,13 +130,14 @@ describe('Backbone.RactiveView', function() {
       beforeEach(function() {
         this.view = new Backbone.RactiveView({ el: 'foo' });
         this.options = { foo: 'bar' };
-        this.fullOptions = _.extend({}, this.view, this.options);
+        this.viewOptions = _.clone(this.view);
         this.view._setRactive(this.options);
       });
 
       it('should create a new Ractive with the correct "options"', function() {
         expect(this.view.ractive._config.options)
-          .to.contain(this.fullOptions);
+          .to.contain(this.options)
+          .and.to.contain(_.omit(this.viewOptions, 'el'));
       });
     });
 

@@ -13,6 +13,7 @@ var ColorView = Backbone.RactiveView.extend({
 var Router = Backbone.Router.extend({
   initialize: function() {
     this.layout = new Layout({ el: '.app' });
+    this.layout.render();
 
     this.collection = new Backbone.Collection([
       { id: 1, name: 'Red',   hex: '#f00' },
@@ -27,17 +28,32 @@ var Router = Backbone.Router.extend({
   },
 
   colors: function() {
-    var view = new ColorsView({
+    this._cleanup();
+
+    this.view = new ColorsView({
       data: { colors: this.collection },
       el: this.layout.$('article')
     });
+
+    this.view.render();
   },
 
   color: function(id) {
-    var view = new ColorView({
+    this._cleanup();
+
+    this.view = new ColorView({
       data: this.collection.get(id),
       el: this.layout.$('article')
     });
+
+    this.view.render();
+  },
+
+  _cleanup: function() {
+    if (this.view) {
+      this.view.remove();
+      delete this.view;
+    }
   }
 });
 

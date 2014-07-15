@@ -62,7 +62,7 @@
 
     _setRactive: function(options) {
       if (this.ractive) this.ractive.teardown();
-      options = _.extend({}, this, options);
+      options = _.omit(_.extend({}, this, options), 'el');
       this.ractive = new Ractive(options);
     }
 
