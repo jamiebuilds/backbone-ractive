@@ -1,18 +1,19 @@
 (function(root, factory) {
 
   if (typeof define === 'function' && define.amd) {
-    define(['backbone', 'underscore'], function(Backbone, _) {
-      return factory(root, Backbone, _);
+    define(['backbone', 'underscore', 'ractive'], function(Backbone, _, Ractive) {
+      return factory(root, Backbone, _, Ractive);
     });
   } else if (typeof exports !== 'undefined') {
     var Backbone = require('backbone');
     var _ = require('underscore');
-    module.exports = factory(root, Backbone, _);
+    var Ractive = require('ractive');
+    module.exports = factory(root, Backbone, _, Ractive);
   } else {
-    factory(root, root.Backbone, root._);
+    factory(root, root.Backbone, root._, root.Ractive);
   }
 
-}(this, function(root, Backbone, _) {
+}(this, function(root, Backbone, _, Ractive) {
   'use strict';
 
   // Backbone.RactiveView
@@ -30,7 +31,7 @@
   RactiveView.extend = Backbone.View.extend;
 
   // List of view options to be merged as properties.
-  var viewOptions = ['data', 'el', 'regions'];
+  var viewOptions = ['data', 'el'];
 
   // Set up all inheritable **Backbone.RactiveView** properties and methods.
   _.extend(RactiveView.prototype, Backbone.Events, {
