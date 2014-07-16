@@ -3,54 +3,30 @@
   <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <style>
-      body {
-        font: normal 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      header {
-        background: #eee;
-        padding: 10px;
-        border-radius: 4px;
-      }
-
-      .thumbnail {
-        display: inline-block;
-        width: 300px;
-      }
-
-      .thumbnail::before {
-        content: "";
-        display: block;
-        padding-bottom: 100%;
-      }
-    </style>
+    <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <div class="app"></div>
 
     <script id="layout-template" type="text/ractive">
-      <h1>backbone-ractive</h1>
+      <h1>Backbone + Ractive</h1>
       <header>
-        <a href="#">Colors</a>
+        <a href="#colors">Colors</a>
       </header>
       <article></article>
     </script>
 
     <script id="colors-template" type="text/ractive">
-      <h1>Colors</h1>
-      <ul>
+      <h2>Colors</h2>
+      <nav>
         {{#colors}}
-          <li><a href="#{{id}}">{{name}}</a></li>
+          <a href="#colors/{{id}}">{{name}}</a>
         {{/colors}}
-      </ul>
+      </nav>
     </script>
 
     <script id="color-template" type="text/ractive">
-      <h1>{{name}}</h1>
+      <h2>{{name}}</h2>
       <div class="thumbnail" style="background-color: {{hex}}"></div>
     </script>
 
@@ -60,6 +36,6 @@
     <script src="../node_modules/ractive/ractive.js"></script>
     <script src="../node_modules/ractive-backbone/Ractive-Backbone.js"></script>
     <script src="../backbone-ractive.js"></script>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>

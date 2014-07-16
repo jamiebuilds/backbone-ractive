@@ -23,37 +23,39 @@ var Router = Backbone.Router.extend({
   },
 
   routes: {
-    ''    : 'colors',
-    ':id' : 'color',
+    ''           : 'index',
+    'colors'     : 'colors',
+    'colors/:id' : 'color',
+  },
+
+  index: function() {
+    this.navigate('colors', { trigger: true });
   },
 
   colors: function() {
-    this._cleanup();
-
-    this.view = new ColorsView({
+    var colorsView = new ColorsView({
       data: { colors: this.collection },
       el: this.layout.$('article')
     });
 
-    this.view.render();
+    this.render(colorsView);
   },
 
   color: function(id) {
-    this._cleanup();
-
-    this.view = new ColorView({
+    var colorView = new ColorView({
       data: this.collection.get(id),
       el: this.layout.$('article')
     });
 
-    this.view.render();
+    this.render(colorView);
   },
 
-  _cleanup: function() {
-    if (this.view) {
-      this.view.remove();
-      delete this.view;
+  render: function(view) {
+    if (this.currentView) {
+      this.currentView.remove();
     }
+    this.currentView = view;
+    this.currentView.render();
   }
 });
 
